@@ -134,12 +134,16 @@ public class StudentTests extends BaseStudentTest {
                 .setName("Eddie Brook")
                 .setMarks(List.of(4, 4, 3));
         List.of(expectedTopStudent, student2, student3).forEach(studentApi::createOrUpdateStudentWithId);
-        List<StudentDto> topStudentFromResp = studentApi.getTopStudent();
-        assertThat("Тело ответа пустое", topStudentFromResp, notNullValue());
-        assertThat("Размер списка студентов в ответе не равен 1", topStudentFromResp, hasSize(1));
-        assertThat("Id студента из ответа не совпадает с id лучшего студента", topStudentFromResp.get(0).getId(), equalTo(expectedTopStudent.getId()));
-        assertThat("Имя студента из ответа не совпадает с именем лучшего студента", topStudentFromResp.get(0).getName(), equalTo(expectedTopStudent.getName()));
-        assertThat("Оценки студента из ответа не совпадают с оценками лучшего студента", topStudentFromResp.get(0).getMarks(), equalTo(expectedTopStudent.getMarks()));
+        List<StudentDto> topStudentListFromResp = studentApi.getTopStudent();
+        assertThat("Тело ответа пустое", topStudentListFromResp, notNullValue());
+        assertThat("Размер списка студентов в ответе не равен 1", topStudentListFromResp, hasSize(1));
+        StudentDto topStudent = topStudentListFromResp.get(0);
+        assertThat("Id студента из ответа не совпадает с id лучшего студента",
+                topStudent.getId(), equalTo(expectedTopStudent.getId()));
+        assertThat("Имя студента из ответа не совпадает с именем лучшего студента",
+                topStudent.getName(), equalTo(expectedTopStudent.getName()));
+        assertThat("Оценки студента из ответа не совпадают с оценками лучшего студента",
+                topStudent.getMarks(), equalTo(expectedTopStudent.getMarks()));
     }
 
     @Test
@@ -158,12 +162,16 @@ public class StudentTests extends BaseStudentTest {
                 .setName("J. Jonah Jameson")
                 .setMarks(List.of(5, 5));
         List.of(expectedTopStudent, student2, student3).forEach(studentApi::createOrUpdateStudentWithId);
-        List<StudentDto> topStudentFromResp = studentApi.getTopStudent();
-        assertThat("Тело ответа пустое", topStudentFromResp, notNullValue());
-        assertThat("Размер списка студентов в ответе не равен 1", topStudentFromResp, hasSize(1));
-        assertThat("Id студента из ответа не совпадает с id лучшего студента", topStudentFromResp.get(0).getId(), equalTo(expectedTopStudent.getId()));
-        assertThat("Имя студента из ответа не совпадает с именем лучшего студента", topStudentFromResp.get(0).getName(), equalTo(expectedTopStudent.getName()));
-        assertThat("Оценки студента из ответа не совпадают с оценками лучшего студента", topStudentFromResp.get(0).getMarks(), equalTo(expectedTopStudent.getMarks()));
+        List<StudentDto> topStudentListFromResp = studentApi.getTopStudent();
+        assertThat("Тело ответа пустое", topStudentListFromResp, notNullValue());
+        assertThat("Размер списка студентов в ответе не равен 1", topStudentListFromResp, hasSize(1));
+        StudentDto topStudent = topStudentListFromResp.get(0);
+        assertThat("Id студента из ответа не совпадает с id лучшего студента",
+                topStudent.getId(), equalTo(expectedTopStudent.getId()));
+        assertThat("Имя студента из ответа не совпадает с именем лучшего студента",
+                topStudent.getName(), equalTo(expectedTopStudent.getName()));
+        assertThat("Оценки студента из ответа не совпадают с оценками лучшего студента",
+                topStudent.getMarks(), equalTo(expectedTopStudent.getMarks()));
     }
 
     @Test
